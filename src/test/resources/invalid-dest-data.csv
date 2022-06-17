@@ -1,0 +1,10 @@
+# -2147483648 is MIN_INTEGER
+destinationKm,bulky,fragile,deliveryLoadLevel
+0,false,false,STANDARD
+0,false,true,INCREASED
+0,true,false,HIGH
+0,true,true,VERY_HIGH
+-1,false,false,STANDARD
+-100,false,true,INCREASED
+-2147483647,true,false,HIGH
+-2147483648,true,true,VERY_HIGH

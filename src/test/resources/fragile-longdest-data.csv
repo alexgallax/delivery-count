@@ -1,0 +1,8 @@
+# 2147483647 is MAX_INTEGER
+destinationKm,bulky,fragile
+31,false,STANDARD
+31,false,VERY_HIGH
+31,true,STANDARD
+31,true,INCREASED
+40,false,STANDARD
+2147483647,true,HIGH
