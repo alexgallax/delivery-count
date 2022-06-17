@@ -1,0 +1,52 @@
+plugins {
+    id 'java'
+    id 'io.qameta.allure' version '2.10.0'
+}
+
+allure {
+    adapter.autoconfigure = true
+    version = '2.18.1'
+
+    useJUnit5 {
+        version = '2.18.1'
+    }
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.8.2'
+    testImplementation 'org.junit.jupiter:junit-jupiter-params:5.8.2'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.2'
+
+    testImplementation group: 'org.hamcrest', name: 'hamcrest', version: '2.2'
+    testImplementation group: 'ru.yandex.qatools.matchers', name: 'matcher-decorators', version: '1.4.1'
+
+    testImplementation group: 'io.qameta.allure', name: 'allure-java-commons', version: '2.18.1'
+    testImplementation group: 'io.qameta.allure', name: 'allure-junit5', version: '2.18.1'
+
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+}
+
+test {
+    useJUnitPlatform()
+
+    def parallel = System.getProperty('parallel')
+    if (parallel != null) {
+        maxParallelForks = Integer.valueOf(parallel)
+    }
+
+    def name = System.getProperty('name')
+    if (name != null) {
+        filter {
+            includeTestsMatching name
+        }
+    }
+}
